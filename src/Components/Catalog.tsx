@@ -3,7 +3,7 @@ import { products, Product } from "../products";
 import ProductCard from "./ProductCard";
 import CatalogPagesLinks from "./CatalogPagesLinks";
 
-const itemsPerPage = 6;
+const itemsPerPage = 12;
 
 const sortCategories = ['name', 'price'];
 
