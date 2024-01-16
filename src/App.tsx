@@ -1,11 +1,25 @@
+import { Route, Routes } from "react-router-dom";
+import { Home } from "./Components/Home";
+import { Catalog } from "./Components/Catalog";
+import { ProductPage } from "./Components/ProductPage";
+import NavBar from "./Components/Navbar";
 
-function App() {
 
-  return (
-    <>
-      hello
-    </>
-  )
+
+export default function App() {
+  return <>
+  <div>
+    <NavBar/>  
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/products' element={<Catalog />} />
+      <Route path='/products/:id' element={<ProductPage />} />
+    </Routes>
+    </div>
+  </>
 }
 
-export default App
+
+
+
+
