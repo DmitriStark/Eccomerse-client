@@ -1,10 +1,5 @@
+import { Product } from "../products";
 
-
-interface Product {
-    id: string;
-    name: string;
-    price: number;
-  }
   interface CatalogPagesLinksProps {
     selectedPageNum: number;
     products: Product[];

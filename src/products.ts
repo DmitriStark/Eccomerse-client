@@ -50,3 +50,9 @@ export const products = [
   { id: "149", name: "currant", price: 12 },
   { id: "150", name: "watermelon", price: 30 }
 ];
+
+export interface Product {
+  id: string;
+  name: string;
+  price: number;
+}

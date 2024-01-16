@@ -23,3 +23,9 @@ body {
   padding-block: .5rem;
   gap: .5rem;
 }
+
+.catalog-board-controls {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
