@@ -6,13 +6,16 @@ export default function NavBar() {
             <div className="navbar">
             <ul>
                 <li>
-                    <Link to='/'>home</Link>
+                    <Link to='/'>Home</Link>
                 </li>
                 <li>
-                    <Link to='/products'>catalog</Link>
+                    <Link to='/products'>Catalog</Link>
                 </li>
                 <li>
                     <Link to='/lessons'>Lessons</Link>
+                </li>
+                <li>
+                    <Link to='/games'>Games</Link>
                 </li>
             </ul>
             </div>

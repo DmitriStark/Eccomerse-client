@@ -1,0 +1,50 @@
+.page-container {
+    height: 100%;
+    width: 100%;
+    /* Use 100% width to avoid double overflow */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: auto;
+    /* Add overflow: auto to enable scrolling if content exceeds viewport */
+    box-sizing: border-box;
+    /* Include padding and border in the element's total width and height */
+    padding: 0 5vw;
+    /* Adjust padding instead of using calc(100vw - 10%) */
+}
+
+.game-1,
+.game-2,
+.game-3,
+.game-4,
+.game-5,
+.game-6 {
+    width: 600px;
+    height: 600px;
+    overflow: hidden;
+    margin: 20px;
+    margin-bottom: 60px;
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+
+
+
+    .game-1,
+    .game-2,
+    .game-3,
+    .game-4,
+    .game-5 {
+        width: 400px;
+        /* Adjust the width for smaller screens */
+        height: 400px;
+        /* Adjust the height for smaller screens */
+    }
+
+
+}
