@@ -1,13 +1,57 @@
+* {
+  box-sizing: border-box;
+}
 body {
-  background-color: black;
-  color: white;
+  display: flex;
+    margin: 0;
+    padding: 0;
 }
 
-.catalog-board {
+.main {
+  flex: 1;
+  padding: 20px;
+  margin-left: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+  width: calc(100vw - 200px); /* Adjusted width to take into account the margin-left */
+  background-color: gray;
+  color: white;
+  overflow: auto;
+}
+
+nav {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  font-size: 32px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 200px;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.navbar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.main .catalog-board {
   display: grid;
   grid-template-columns: repeat(3, 8rem);
   justify-content: center;
-  gap: .5rem;
+  align-items: center;
+  gap: 0.5rem;
+  flex-grow: 1; /* Allow .catalog-board to take remaining space */
 }
 
 .product-card {
@@ -17,15 +61,18 @@ body {
   background-color: hsl(0, 0%, 10%);
 }
 
-.pages-links {
+.main .pages-links {
   display: flex;
   justify-content: center;
-  padding-block: .5rem;
-  gap: .5rem;
+  align-items: center;
+  padding-block: 0.5rem;
+  gap: 0.5rem;
+  margin-bottom: 1rem; /* Add margin-bottom to separate from the catalog board */
 }
 
 .catalog-board-controls {
   display: flex;
   justify-content: center;
   text-align: center;
+  margin-top: 1rem; /* Add margin-top to separate from the top of the main container */
 }

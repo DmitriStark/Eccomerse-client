@@ -10,11 +10,13 @@ export default function App() {
   return <>
   <div>
     <NavBar/>  
+    <div className="main">
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/products' element={<Catalog />} />
       <Route path='/products/:id' element={<ProductPage />} />
     </Routes>
+    </div>
     </div>
   </>
 }
