@@ -8,7 +8,7 @@ import NavBar from "./Components/Navbar";
 
 export default function App() {
   return <>
-  <div>
+  
     <NavBar/>  
     <div className="main">
     <Routes>
@@ -16,7 +16,6 @@ export default function App() {
       <Route path='/products' element={<Catalog />} />
       <Route path='/products/:id' element={<ProductPage />} />
     </Routes>
-    </div>
     </div>
   </>
 }
