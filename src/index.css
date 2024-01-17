@@ -92,8 +92,8 @@ nav {
     font-size: 10px;
   }
   nav {
-    width: 10%;
-    font-size: 10px;   
+    width: 15%;
+    font-size: 15px;   
   }
   .navbar {
     position: fixed;
@@ -122,13 +122,13 @@ nav {
     margin: 10px;
     flex: 1;
     padding: 20px;
-    margin-left: 10%;
+    margin-left: 15%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     min-height: 100vh;
-    width: calc(100vw - 10%);
+    width: calc(100vw - 15%);
     /* Adjusted width to take into account the margin-left */
     background-color: gray;
     color: white;
