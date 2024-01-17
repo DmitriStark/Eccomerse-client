@@ -2,7 +2,7 @@ import  { useState } from "react";
 import { products, Product } from "../products";
 import ProductCard from "./ProductCard";
 import CatalogPagesLinks from "./CatalogPagesLinks";
-
+import "../css/Catalog.css";
 const itemsPerPage = 12;
 
 const sortCategories = ['name', 'price'];
@@ -46,6 +46,7 @@ export function Catalog() {
 
   return (
     <>
+    <div className="Catalog">
       <CatalogControls handleSort={handleSort} handleSearch={handleSearch} />
       <CatalogBoard cards={cards} />
       <CatalogPagesLinks
@@ -53,6 +54,7 @@ export function Catalog() {
         onPageBtnClick={(num) => setCurPageNum(num)}
         pagesCount={pagesCount}
       />
+      </div>
     </>
   );
 }

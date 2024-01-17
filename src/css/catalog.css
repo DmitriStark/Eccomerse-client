@@ -1,0 +1,59 @@
+/* Catalog.css */
+.Catalog{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.main {
+    display: block;
+    padding: 20px;
+    margin-left: 10%;
+    min-height: 100vh;
+    width: calc(100vw - 10%);
+    background-color: gray;
+    color: white;
+    overflow: auto;
+  }
+  
+ .main .catalog-board {
+    display: grid;
+    grid-template-columns: repeat(4, 8rem);
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    margin: 20px;
+    /* Allow .catalog-board to take remaining space */
+  }
+  
+
+  /* mobile */
+
+@media only screen and (max-width: 600px) {
+    body{
+      font-size: 10px;
+    }
+    
+    .main {
+      margin: 10px;
+      flex: 1;
+      padding: 15%;
+      margin-left: 20%;
+      display: grid;
+      min-height: 100vh;
+      width: calc(100vw - 20%);
+      /* Adjusted width to take into account the margin-left */
+      background-color: gray;
+      color: white;
+      overflow: auto;
+    }
+  
+    .main .catalog-board {
+      display: grid;
+      grid-template-columns: repeat(2, 6rem);
+      justify-content: start;
+      align-items: center;
+      gap: 0.5rem;
+      flex-grow: 1;
+      /* Allow .catalog-board to take remaining space */
+    }
+  }

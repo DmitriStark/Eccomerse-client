@@ -54,17 +54,6 @@ nav {
   margin: 0;
 }
 
-.main .catalog-board {
-  display: grid;
-  grid-template-columns: repeat(3, 8rem);
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  flex-grow: 1;
-  margin: 20px;
-  /* Allow .catalog-board to take remaining space */
-}
-
 .product-card {
   display: flex;
   flex-direction: column;
@@ -150,13 +139,4 @@ nav {
     overflow: auto;
   }
 
-  .main .catalog-board {
-    display: grid;
-    grid-template-columns: repeat(2, 6rem);
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    flex-grow: 1;
-    /* Allow .catalog-board to take remaining space */
-  }
 }
