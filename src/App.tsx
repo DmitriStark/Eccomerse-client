@@ -11,7 +11,6 @@ import { Lessons } from "./Components/Lessons";
 
 export default function App() {
   return <>
-  
     <NavBar/>  
     <div className="main">
     <Routes>
