@@ -5,6 +5,7 @@ import { ProductPage } from "./Components/ProductPage";
 import NavBar from "./Components/Navbar";
 import { Lessons } from "./Components/Lessons";
 import { Games } from "./Components/Games";
+import { Footer } from "./Components/Footer";
 
 
 
@@ -22,6 +23,7 @@ export default function App() {
       <Route path='/games' element={<Games />} />
     </Routes>
     </div>
+    <Footer/>
   </>
 }
 
