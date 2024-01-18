@@ -1,7 +1,13 @@
 .footer {
     width: 100vw;
-    height: 30px;
+    height: 40px;
     display: flex;
     justify-content: center;
     margin: 20px;
+}
+
+.footer img{
+    width: 30px;
+    height: 30px;
+    margin: 10px;
 }
