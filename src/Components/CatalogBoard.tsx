@@ -1,10 +1,7 @@
 import React from "react";
 import ProductCard from "./ProductCard";
 import { itemsPerPage } from "./constants";
-
-interface Product {
- id:number
-}
+import {Product} from "./Catalog"
 
 interface CatalogBoardProps {
   products: Product[];

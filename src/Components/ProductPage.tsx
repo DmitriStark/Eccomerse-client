@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { apiUrl } from "./constants";
+import {Product} from "./Catalog"
 
-interface Product {
-  // Define the structure of your product data
-  // Example: name: string; price: number; description: string;
-}
+
 
 export const ProductPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
