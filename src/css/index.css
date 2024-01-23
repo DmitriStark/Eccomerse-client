@@ -17,45 +17,43 @@ body {
   color: gray;
   transition: 0.5s;
  }
-
-.main { 
-  flex: 1;
-  padding: 20px;
-  margin-left: 20%;
-  min-height: 100vh;
+ #root {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: calc(100% - 20%);
-  /* Adjusted width to take into account the margin-left */
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 100vh;
+}
+.header{
+  height: 80px;
+  width: 100vw;
+  background-color: gray;
+  text-align: center;
+}
+.main {
+  flex: 1;
+  margin: 10px;
+  box-sizing: border-box;
+  position: relative;
   background-color: gray;
   color: white;
   overflow: auto;
+  width: 100%;
 }
 
 nav {
-  position: fixed;
   display: flex;
-  flex-direction: column;
   font-size: 32px;
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 20%;
-  height: 95vh;
+  align-content: center;
   background-color: #f0f0f0;
 }
 
 .navbar {
-  position: fixed;
-  left: 0;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 20px;
-  top: 30%;
-  transform: translateY(-50%); 
+  justify-content: center;
   
 }
 .navbar ul {
