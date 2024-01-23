@@ -1,99 +1,74 @@
-import  { useState } from "react";
-import { products, Product } from "../products";
-import ProductCard from "./ProductCard";
+import React, { useEffect, useState } from "react";
 import CatalogPagesLinks from "./CatalogPagesLinks";
-import "../css/Catalog.css";
-const itemsPerPage = 12;
+import CatalogBoard from "./CatalogBoard";
+import CatalogControls from "./CatalogControls";
+import { itemsPerPage, apiUrl } from "./constants";
+import "../css/catalog.css";
 
-const sortCategories = ['name', 'price'];
 
-interface CatalogControlsProps {
-  handleSearch: (str: string) => void;
-  handleSort: (category: string) => void;
+export interface Product {
+  name: string;
+  price: number;
+  id:number
+  // Add other properties as needed
 }
 
-interface CatalogBoardProps {
-  cards: JSX.Element[];
-}
+export const Catalog: React.FC = () => {
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [searchedProducts, setSearchedProducts] = useState<Product[]>([]);
+  const [curPageNum, setCurPageNum] = useState(1);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(apiUrl);
+        const products: Product[] = await res.json();
+        setAllProducts(products);
+        setSearchedProducts(products);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
-export function Catalog() {
-  const [searchedProducts, setSearchedProducts] = useState<Product[]>(products);
-  const [curPageNum, setCurPageNum] = useState<number>(1);
-  const cards = getPageCards(curPageNum, searchedProducts);
+    fetchData();
+  }, []);
 
-  function handleSearch(str: string) {
-    const result = products.filter((p) => p.name.includes(str));
-    setSearchedProducts(result);
-  }
+  const handleSearch = (str: string, sortCategory: string) => {
+    const filteredList = allProducts.filter((p) =>
+      p.name.toLowerCase().includes(str.toLowerCase())
+    );
 
-  function handleSort(category: string) {
-    const productsClone = [...products];
-
-    switch (category) {
-      case 'name':
-        productsClone.sort((p1, p2) => p1.name.localeCompare(p2.name));
+    switch (sortCategory) {
+      case "name":
+        filteredList.sort((p1, p2) => p1.name.localeCompare(p2.name));
         break;
-      case 'price':
-        productsClone.sort((p1, p2) => p1.price - p2.price);
+      case "price":
+        filteredList.sort((p1, p2) => p1.price - p2.price);
         break;
+      // Add other cases as needed
     }
 
-    setSearchedProducts(productsClone);
-  }
+    setSearchedProducts(filteredList);
+    setCurPageNum(1);
+  };
+
+  if (isLoading) return <div>Loading...</div>;
 
   const pagesCount = Math.ceil(searchedProducts.length / itemsPerPage);
 
   return (
     <>
-    <div className="Catalog">
-      <CatalogControls handleSort={handleSort} handleSearch={handleSearch} />
-      <CatalogBoard cards={cards} />
+      <CatalogControls handleSearch={handleSearch} />
+      <CatalogBoard products={searchedProducts} curPageNum={curPageNum} />
       <CatalogPagesLinks
         selectedPageNum={curPageNum}
         onPageBtnClick={(num) => setCurPageNum(num)}
         pagesCount={pagesCount}
       />
-      </div>
     </>
   );
-}
+};
 
-function CatalogControls({ handleSearch, handleSort }: CatalogControlsProps) {
-  const [inputVal, setInputVal] = useState<string>('');
-
-  const sortOptions = ['', ...sortCategories].map((c) => (
-    <option key={c} value={c}>
-      {c}
-    </option>
-  ));
-
-  return (
-    <div className="catalog-board-controls">
-      <input
-        type="text"
-        value={inputVal}
-        onChange={(e) => setInputVal(e.target.value)}
-      />
-      <button onClick={() => handleSearch(inputVal)}>search</button>
-      <select onChange={(e) => handleSort(e.target.value)}>
-        {sortOptions}
-      </select>
-    </div>
-  );
-}
-
-function getPageCards(pageNum: number, allProducts: Product[]): JSX.Element[] {
-  const firstProductIndex = (pageNum - 1) * itemsPerPage;
-
-  const pageProducts = allProducts.slice(
-    firstProductIndex,
-    firstProductIndex + itemsPerPage
-  );
-
-  return pageProducts.map((p) => <ProductCard key={p.id} product={p} />);
-}
-
-function CatalogBoard({ cards }: CatalogBoardProps) {
-  return <div className="catalog-board">{cards}</div>;
-}
+export default Catalog;

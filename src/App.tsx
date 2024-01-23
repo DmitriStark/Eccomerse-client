@@ -6,6 +6,7 @@ import NavBar from "./Components/Navbar";
 import { Lessons } from "./Components/Lessons";
 import { Games } from "./Components/Games";
 import { Footer } from "./Components/Footer";
+import {LocalStorageDemo} from "./Components/localStorage"
 
 
 
@@ -21,6 +22,7 @@ export default function App() {
       <Route path='/products' element={<Catalog />} />
       <Route path='/products/:id' element={<ProductPage />} />
       <Route path='/games' element={<Games />} />
+      <Route path='/localstorage' element={<LocalStorageDemo />} />
     </Routes>
     </div>
     <Footer/>

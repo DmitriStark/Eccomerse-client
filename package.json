@@ -9,15 +9,18 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "deploy": "firebase deploy",
-    "builddeploy": "npm run build && npm run deploy"
+    "builddeploy": "npm run build && npm run deploy",
+    "fake-server": "json-server --port 8000 db.json"
   },
   "dependencies": {
     "firebase": "^10.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.21.2"
+    "react-router-dom": "^6.21.2",
+    "use-local-storage": "^3.0.0"
   },
   "devDependencies": {
+    "json-server": "^1.0.0-alpha.22",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
