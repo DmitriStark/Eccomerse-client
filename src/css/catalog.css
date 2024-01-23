@@ -31,19 +31,7 @@
       font-size: 10px;
     }
     
-    .main {
-      margin: 10px;
-      flex: 1;
-      padding: 15%;
-      margin-left: 20%;
-      display: grid;
-      min-height: 100vh;
-      width: calc(100vw - 20%);
-      /* Adjusted width to take into account the margin-left */
-      background-color: gray;
-      color: white;
-      overflow: auto;
-    }
+   
   
     .main .catalog-board {
       display: grid;
