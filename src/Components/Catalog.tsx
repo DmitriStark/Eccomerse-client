@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
 import CatalogPagesLinks from "./CatalogPagesLinks";
 import CatalogBoard from "./CatalogBoard";
+import { itemsPerPage, serverHost } from "./constants";
 import CatalogControls from "./CatalogControls";
-import { itemsPerPage, apiUrl } from "./constants";
-import "../css/catalog.css";
-
+import "../css/catalog.css"
 
 export interface Product {
+  id:number
   name: string;
   price: number;
-  id:number
-  // Add other properties as needed
+  // Add any other properties of the product here
 }
 
-export const Catalog: React.FC = () => {
+interface CatalogProps {}
+
+const apiUrl = `${serverHost}/products`;
+
+const Catalog: React.FC<CatalogProps> = () => {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchedProducts, setSearchedProducts] = useState<Product[]>([]);
@@ -23,31 +26,32 @@ export const Catalog: React.FC = () => {
     const fetchData = async () => {
       try {
         const res = await fetch(apiUrl);
-        const products: Product[] = await res.json();
+        const response = await res.json();
+        const products: Product[] = response[0]?.products || [];
+        console.log("Fetched Products:", products);
         setAllProducts(products);
         setSearchedProducts(products);
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
-    };
+    };    
 
     fetchData();
   }, []);
 
-  const handleSearch = (str: string, sortCategory: string) => {
+  const handleSearch = (str: string, sortCategory: 'name' | 'price') => {
     const filteredList = allProducts.filter((p) =>
-      p.name.toLowerCase().includes(str.toLowerCase())
+      p.name.includes(str)
     );
 
     switch (sortCategory) {
-      case "name":
+      case 'name':
         filteredList.sort((p1, p2) => p1.name.localeCompare(p2.name));
         break;
-      case "price":
+      case 'price':
         filteredList.sort((p1, p2) => p1.price - p2.price);
         break;
-      // Add other cases as needed
     }
 
     setSearchedProducts(filteredList);

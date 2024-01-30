@@ -21,6 +21,9 @@ export default function NavBar() {
             <li>
               <Link to="/localstorage">LocalStorage</Link>
             </li>
+            <li>
+              <Link to="/users">users</Link>
+            </li>
           </ul>
         </div>
       </nav>

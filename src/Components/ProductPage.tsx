@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { apiUrl } from "./constants";
+import { serverHost } from "./constants";
 import {Product} from "./Catalog"
 
 
-
-export const ProductPage: React.FC = () => {
+const ProductPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
 
   const [product, setProduct] = useState<Product | null>(null);
@@ -14,13 +13,14 @@ export const ProductPage: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const apiUrl = `${serverHost}/products`;
         const res = await fetch(`${apiUrl}/${id}`);
         const data: Product = await res.json();
+        console.log(data);
         setProduct(data);
         setIsLoading(false);
       } catch (error) {
-        console.error("Error fetching data:", error);
-        // Handle error as needed
+        console.error("Error fetching product data:", error);
       }
     };
 
@@ -36,3 +36,4 @@ export const ProductPage: React.FC = () => {
   );
 };
 
+export default ProductPage;
