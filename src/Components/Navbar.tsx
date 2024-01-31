@@ -54,6 +54,7 @@ export default function NavBar() {
           <div className={burgerClass}></div>
           <div className={burgerClass}></div>
         </div>
+        <p>Click The Burger To open Menu</p>
       </nav>
       <div className={menuClass}>
         <div className="navbar">

@@ -42,6 +42,10 @@ nav {
     border-radius: 0.5em;
 }
 
+nav p{
+    margin: 30px;
+}
+
 
 /* --------------------------sliding menu ------------------ */
 
