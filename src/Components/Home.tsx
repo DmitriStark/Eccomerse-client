@@ -4,7 +4,7 @@ export function Home() {
   return (
     <div className="home-container">
       <div className="me-container">
-        <img src="images/mewobackground.png" alt="" />
+        <img src="/images/mewobackground.png" alt="" />
       </div>
       <div className="obout">
         <h1>Its Me ╰(*°▽°*)╯</h1>
