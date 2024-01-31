@@ -34,7 +34,7 @@ const Users: React.FC = () => {
   }, []);
 
   if (!data) {
-    return <div>Loading...</div>;
+    return <div className="loading">Loading...</div>;
   }
 
   return <pre>{JSON.stringify(data, null, 2)}</pre>;

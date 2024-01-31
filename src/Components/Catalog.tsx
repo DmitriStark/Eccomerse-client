@@ -58,7 +58,7 @@ const Catalog: React.FC<CatalogProps> = () => {
     setCurPageNum(1);
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div className="loading">Loading...</div>;
 
   const pagesCount = Math.ceil(searchedProducts.length / itemsPerPage);
 

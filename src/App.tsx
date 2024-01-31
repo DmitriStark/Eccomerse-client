@@ -8,12 +8,10 @@ import { Games } from "./Components/Games";
 import { Footer } from "./Components/Footer.tsx";
 import { Lessons } from "./Components/Lessons.tsx";
 import NavBar from "./Components/Navbar";
-import { Header } from "./Components/Header.tsx";
 
 export default function App() {
   return (
     <>
-      <Header />
       <NavBar />
       <div className="main">
         <Routes>
