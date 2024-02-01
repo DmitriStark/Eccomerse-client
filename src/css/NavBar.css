@@ -84,6 +84,7 @@ nav p {
 
 @media only screen and (max-width: 600px) {
   .menu {
+    top: 8%;
     width: 20%;
     height: 100%;
     font-size: 15px;
