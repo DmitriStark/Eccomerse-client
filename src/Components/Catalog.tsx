@@ -27,7 +27,7 @@ const Catalog: React.FC<CatalogProps> = () => {
       try {
         const res = await fetch(apiUrl);
         const response = await res.json();
-        const products: Product[] = response[0]?.products || [];
+        const products: Product[] = response;
         console.log("Fetched Products:", products);
         setAllProducts(products);
         setSearchedProducts(products);
