@@ -6,6 +6,10 @@
   gap: 0.5rem;
 }
 
+.user-link {
+  text-decoration: none;
+  color: inherit;
+}
 .user {
   display: flex;
   flex-direction: column;
@@ -13,26 +17,20 @@
   background-color: hsl(0, 0%, 10%);
 }
 
-
-
 /* ----------------mobile------------- */
 
 @media only screen and (max-width: 600px) {
-   
-    
-    .catalog-board {
-      margin: 20px;
-      display: grid;
-      grid-template-columns: repeat(2, 6rem);
-      justify-content: center;
-      gap: .5rem;
-      
-    }
-    .users {
-        display: grid;
-        grid-template-columns: repeat(2, 8rem);
-        justify-content: center;
-        gap: 0.5rem;
-      }
-   
+  .catalog-board {
+    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 6rem);
+    justify-content: center;
+    gap: 0.5rem;
   }
+  .users {
+    display: grid;
+    grid-template-columns: repeat(2, 8rem);
+    justify-content: center;
+    gap: 0.5rem;
+  }
+}

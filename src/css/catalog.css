@@ -13,7 +13,10 @@
   align-items: center;
   background-color: hsl(0, 0%, 10%);
 }
-
+.product-card-link{
+    text-decoration: none;
+    color: inherit; 
+}
 .loading{
   display: flex;
   justify-content: center;

@@ -1,4 +1,7 @@
+// Users.tsx
+
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "../css/Users.css";
 
 interface ExtendedImportMeta extends ImportMeta {
@@ -11,6 +14,7 @@ const host: string = (import.meta as ExtendedImportMeta).env.VITE_SERVER_URL;
 const apiUrl: string = `${host}/users`;
 
 interface UserData {
+  id: string; // Assuming your user data has an ID
   name: string;
   age: number;
 }
@@ -38,11 +42,13 @@ const Users: React.FC = () => {
 
   return (
     <div className="users">
-      {data.map((user, index) => (
-        <div key={index} className="user">
-          <h2>{user.name}</h2>
-          <p>{`Age: ${user.age}`}</p>
-        </div>
+      {data.map((user) => (
+        <Link key={user.id} to={`/user/${user.id}`} className="user-link">
+          <div className="user">
+            <h2>{user.name}</h2>
+            <p>{`Age: ${user.age}`}</p>
+          </div>
+        </Link>
       ))}
     </div>
   );

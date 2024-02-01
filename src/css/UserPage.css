@@ -1,0 +1,19 @@
+.user-page{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: hsl(0, 0%, 10%);
+    width: 300px;
+    height: 400px;
+    margin: 20px;
+}
+
+
+.user-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
