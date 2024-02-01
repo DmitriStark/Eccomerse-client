@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
+import "../css/Users.css";
 
-// Extend ImportMeta interface to include the env property
 interface ExtendedImportMeta extends ImportMeta {
   env: {
     VITE_SERVER_URL: string;
-    // Add other environment variables as needed
   };
 }
 
@@ -17,13 +16,13 @@ interface UserData {
 }
 
 const Users: React.FC = () => {
-  const [data, setData] = useState<UserData | null>(null);
+  const [data, setData] = useState<UserData[] | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await fetch(apiUrl);
-        const resBody: UserData = await res.json();
+        const resBody: UserData[] = await res.json();
         setData(resBody);
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -37,7 +36,16 @@ const Users: React.FC = () => {
     return <div className="loading">Loading...</div>;
   }
 
-  return <pre>{JSON.stringify(data, null, 2)}</pre>;
+  return (
+    <div className="users">
+      {data.map((user, index) => (
+        <div key={index} className="user">
+          <h2>{user.name}</h2>
+          <p>{`Age: ${user.age}`}</p>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default Users;
