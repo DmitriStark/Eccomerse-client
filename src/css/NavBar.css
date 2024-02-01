@@ -28,6 +28,7 @@ nav {
 }
 
 .menu {
+  margin: 10px;
   width: 20%;
   height: 100%;
   background-color: rgba(37, 39, 53, 0.3);
