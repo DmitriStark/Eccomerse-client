@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { serverHost } from "./constants";
-import {Product} from "./Catalog"
-
+import { Product } from "./Catalog";
+import "../css/ProductPage.css";
 
 const ProductPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -16,7 +16,6 @@ const ProductPage: React.FC = () => {
         const apiUrl = `${serverHost}/products`;
         const res = await fetch(`${apiUrl}/${id}`);
         const data: Product = await res.json();
-        console.log(data);
         setProduct(data);
         setIsLoading(false);
       } catch (error) {
@@ -30,9 +29,13 @@ const ProductPage: React.FC = () => {
   if (isLoading) return <div>Loading...</div>;
 
   return (
-    <>
-      <pre>{JSON.stringify(product, null, 2)}</pre>
-    </>
+    <div className="product-container">
+      <div className="product-details">
+        <h2>{product?.name}</h2>
+        <p>Price: ${product?.price}</p>
+        {/* Add other product details as needed */}
+      </div>
+    </div>
   );
 };
 

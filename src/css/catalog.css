@@ -12,6 +12,7 @@
   flex-direction: column;
   align-items: center;
   background-color: hsl(0, 0%, 10%);
+  border-radius: 0.5em;
 }
 .product-card-link{
     text-decoration: none;

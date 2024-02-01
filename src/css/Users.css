@@ -4,6 +4,7 @@
   grid-template-columns: repeat(3, 8rem);
   justify-content: center;
   gap: 0.5rem;
+  
 }
 
 .user-link {
@@ -15,6 +16,8 @@
   flex-direction: column;
   align-items: center;
   background-color: hsl(0, 0%, 10%);
+  border-radius: 0.5em;
+
 }
 
 /* ----------------mobile------------- */
