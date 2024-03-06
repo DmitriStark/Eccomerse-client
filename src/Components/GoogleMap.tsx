@@ -31,8 +31,8 @@ class MapContainer extends Component<MapContainerProps, MapContainerState> {
       activeMarker: {},
       selectedPlace: {},
       mapCenter: {
-        lat: 49.2827291,
-        lng: -123.1207375,
+        lat: 31.8944,
+        lng: 34.8115,
       },
     };
   }
