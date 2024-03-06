@@ -3,13 +3,14 @@ import { Home } from "./Components/Home";
 import Catalog from "./Components/Catalog";
 import Users from "./Components/Users";
 import ProductPage from "./Components/ProductPage";
-import { LocalStorageDemo } from "./Components/localStorage.tsx";
+import { LocalStorageDemo } from "./Components/localStorage";
 import { Games } from "./Components/Games";
-import { Footer } from "./Components/Footer.tsx";
-import { Lessons } from "./Components/Lessons.tsx";
+import { Footer } from "./Components/Footer";
+import { Lessons } from "./Components/Lessons";
 import NavBar from "./Components/Navbar";
-import UserPage from "./Components/UserPage.tsx";
-import { Map } from "./Components/Map.tsx"
+import UserPage from "./Components/UserPage";
+import { Map } from "./Components/Map"
+import React from "react";
 
 export default function App() {
   return (

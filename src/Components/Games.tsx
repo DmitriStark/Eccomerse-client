@@ -1,3 +1,4 @@
+import React from "react"
 import "../css/Games.css"
 export function Games() {
 

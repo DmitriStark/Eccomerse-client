@@ -4,13 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/Users.css";
 
-interface ExtendedImportMeta extends ImportMeta {
-  env: {
-    VITE_SERVER_URL: string;
-  };
-}
-
-const host: string = (import.meta as ExtendedImportMeta).env.VITE_SERVER_URL;
+const host: string = import.meta.env.VITE_SERVER_URL;
 const apiUrl: string = `${host}/users`;
 
 interface UserData {

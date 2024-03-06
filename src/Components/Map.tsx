@@ -13,6 +13,7 @@
 
 import GoogleMap from "./GoogleMap";
 import "../css/Map.css";
+import React from "react";
 
 
 

@@ -1,5 +1,6 @@
 import useLocalStorage from "use-local-storage";
 import "../css/localstorage.css";
+import React from "react";
 
 
 interface FormData {

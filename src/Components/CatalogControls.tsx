@@ -1,6 +1,7 @@
 // CatalogControls.tsx
 import{ useState } from "react";
 import { sortCategories } from "./constants";
+import React from "react";
 
 interface CatalogControlsProps {
   handleSearch: (str: string, sortCategory: 'name' | 'price') => void;
