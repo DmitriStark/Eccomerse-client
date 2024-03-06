@@ -77,6 +77,9 @@ export default function NavBar() {
             <li>
               <Link to="/users">users</Link>
             </li>
+            <li>
+              <Link to="/map">Map</Link>
+            </li>
           </ul>
         </div>
       </div>

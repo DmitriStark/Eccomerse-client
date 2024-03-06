@@ -1,0 +1,24 @@
+/* MapContainer.css */
+
+.location-search-input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.autocomplete-dropdown-container {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* Adjust other styles as needed */
+
+/* Add more styles for your map container */
+.map-container {
+  width: 800px;
+  height: 800px;
+  position: relative;
+}

@@ -1,0 +1,26 @@
+
+
+.my-map{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    height: 600px;
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;  */
+}
+
+.map-holder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-map.h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}

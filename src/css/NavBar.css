@@ -8,6 +8,7 @@ nav {
   justify-content: flex-start;
   border-radius: 0.5em;
   padding: 1em;
+
 }
 
 .burger-menu {
@@ -39,6 +40,8 @@ nav {
   font-size: 32px;
   text-align: center;
   border-radius: 0.5em;
+  z-index: 1;
+
 }
 
 nav p {

@@ -9,6 +9,7 @@ import { Footer } from "./Components/Footer.tsx";
 import { Lessons } from "./Components/Lessons.tsx";
 import NavBar from "./Components/Navbar";
 import UserPage from "./Components/UserPage.tsx";
+import { Map } from "./Components/Map.tsx"
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/localstorage" element={<LocalStorageDemo />} />
           <Route path="/users" element={<Users />} />
           <Route path="/user/:id" element={<UserPage />} />
+          <Route path="/map" element={<Map />} />
         </Routes>
       </div>
       <Footer />
