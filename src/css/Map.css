@@ -24,3 +24,21 @@
     align-items: center;
 
 }
+
+
+@media only screen and (max-width: 600px) {
+
+    .my-map{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        height: 400px;
+        /* display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;  */
+    }
+
+  
+}
