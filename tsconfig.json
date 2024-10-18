@@ -9,8 +9,9 @@
     "isolatedModules": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
     "noEmit": true,
-    "strictNullChecks": false, // You might want to enable this based on your preferences
+    "strictNullChecks": false,
     "skipLibCheck": true,
     "noImplicitAny": false,
     "baseUrl": ".",

@@ -1,23 +1,11 @@
 import React from "react";
+import { Lesson1 } from "./lesson1/lesson1";
 
 export function Lessons() {
   return (
     <div>
       <h1>Lessons</h1>
-      <img src="/images/vite.png" alt="Footer Image" />
-      <img src="/images/vite.png" alt="Footer Image" />
-      <img src="/images/vite.png" alt="Footer Image" />
-      <img src="/images/vite.png" alt="Footer Image" />
-      <img src="/images/vite.png" alt="Footer Image" />
-      <img src="/images/vite.png" alt="Footer Image" />
-      <img src="/images/vite.png" alt="Footer Image" />
-      <img src="/images/vite.png" alt="Footer Image" />
-      <img src="/images/vite.png" alt="Footer Image" />
-      <img src="/images/vite.png" alt="Footer Image" />
-      <img src="/images/vite.png" alt="Footer Image" />
-      <img src="/images/vite.png" alt="Footer Image" />
-      <img src="/images/vite.png" alt="Footer Image" />
-      <img src="/images/vite.png" alt="Footer Image" />
+      <Lesson1/>
     </div>
   );
 }

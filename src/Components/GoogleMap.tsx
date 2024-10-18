@@ -1,125 +1,73 @@
-import { Component } from 'react';
-import { Map, Marker, GoogleApiWrapper, GoogleAPI, IMapProps } from 'google-maps-react';
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from 'react-places-autocomplete';
-import './MapContainer.css';
-import React from 'react';
+// GoogleMap.js
+import React, { useRef, useState } from "react";
+import {
+  GoogleMap,
+  LoadScript,
+  Marker,
+  StandaloneSearchBox,
+} from "@react-google-maps/api";
 
-interface MapContainerProps {
-  google: GoogleAPI;
-}
+const containerStyle = {
+  width: "100%",
+  height: "400px",
+};
 
-interface MapContainerState {
-  address: string;
-  showingInfoWindow: boolean;
-  activeMarker: unknown;
-  selectedPlace: unknown;
-  mapCenter: {
-    lat: number;
-    lng: number;
-  };
-}
+const center = {
+  lat: -3.745, // Default latitude
+  lng: -38.523, // Default longitude
+};
 
-class MapContainer extends Component<MapContainerProps, MapContainerState> {
-  constructor(props: MapContainerProps) {
-    super(props);
-    this.state = {
-      address: '',
-      showingInfoWindow: false,
-      activeMarker: {},
-      selectedPlace: {},
-      mapCenter: {
-        lat: 31.8944,
-        lng: 34.8115,
-      },
-    };
-  }
+export default function MyGoogleMap({ googleMapApiKey }) {
+  const [map, setMap] = useState(null);
+  const [marker, setMarker] = useState(center);
+  const searchBoxRef = useRef(null);
 
-  handleChange = (address: string) => {
-    this.setState({ address });
+  const onLoad = (mapInstance) => {
+    setMap(mapInstance);
   };
 
-  handleSelect = (address: string) => {
-    this.setState({ address });
-    geocodeByAddress(address)
-      .then((results) => getLatLng(results[0]))
-      .then((latLng) => {
-        console.log('Success', latLng);
-        this.setState({ mapCenter: latLng });
-      })
-      .catch((error) => console.error('Error', error));
+  const onPlacesChanged = () => {
+    const places = searchBoxRef.current.getPlaces();
+    if (places && places.length) {
+      const place = places[0];
+      setMarker({
+        lat: place.geometry.location.lat(),
+        lng: place.geometry.location.lng(),
+      });
+      map.panTo(marker);
+    }
   };
 
-  render() {
-    const mapProps: IMapProps = {
-      google: this.props.google,
-      initialCenter: {
-        lat: this.state.mapCenter.lat,
-        lng: this.state.mapCenter.lng,
-      },
-      center: {
-        lat: this.state.mapCenter.lat,
-        lng: this.state.mapCenter.lng,
-      },
-    };
-
-    return (
-      <div id='googleMaps'>
-        <PlacesAutocomplete
-          value={this.state.address}
-          onChange={this.handleChange}
-          onSelect={this.handleSelect}
+  return (
+    <LoadScript googleMapsApiKey={googleMapApiKey} libraries={["places"]}>
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={marker}
+        zoom={10}
+        onLoad={onLoad}
+      >
+        <StandaloneSearchBox
+          ref={searchBoxRef}
+          onPlacesChanged={onPlacesChanged}
         >
-          {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-            <div>
-              <input
-                {...getInputProps({
-                  placeholder: 'Search Places ...',
-                  className: 'location-search-input',
-                })}
-              />
-              <div className="autocomplete-dropdown-container">
-                {loading && <div>Loading...</div>}
-                {suggestions.map((suggestion) => {
-                  const className = suggestion.active
-                    ? 'suggestion-item--active'
-                    : 'suggestion-item';
-                  const style = suggestion.active
-                    ? { backgroundColor: '#fafafa', cursor: 'pointer', color: 'black' }
-                    : { backgroundColor: '#ffffff', cursor: 'pointer', color: 'black' };
-                  return (
-                    <div
-                      {...getSuggestionItemProps(suggestion, {
-                        className,
-                        style,
-                      })}
-                    >
-                      <span>{suggestion.description}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-        </PlacesAutocomplete>
-        <div className='map'>
-          <Map {...mapProps}>
-            <Marker
-              position={{
-                lat: this.state.mapCenter.lat,
-                lng: this.state.mapCenter.lng,
-              }}
-            />
-          </Map>
-        </div>
-      </div>
-    );
-  }
+          <input
+            type="text"
+            placeholder="Search places..."
+            style={{
+              boxSizing: "border-box",
+              border: "1px solid transparent",
+              width: "240px",
+              height: "32px",
+              padding: "0 12px",
+              borderRadius: "3px",
+              outline: "none",
+              fontSize: "14px",
+              marginBottom: "10px",
+            }}
+          />
+        </StandaloneSearchBox>
+        <Marker position={marker} />
+      </GoogleMap>
+    </LoadScript>
+  );
 }
-
-// eslint-disable-next-line react-refresh/only-export-components
-export default GoogleApiWrapper({
-  apiKey: import.meta.env.VITE_GoogleMapKey as string,
-})(MapContainer);
