@@ -14,6 +14,7 @@ import UserPage from "./Components/UserPage";
 import { Map } from "./Components/Map";
 import React from "react";
 import Login from "./Components/login/GoogleLogin"; // Updated path
+import {Register} from "./Components/userRegistration/userRegister";
 
 
 const App: React.FC = () => {
@@ -31,6 +32,7 @@ const App: React.FC = () => {
           <Route path="/user/:id" element={<UserPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/map" element={<Map />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </div><Footer />
       </>

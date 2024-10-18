@@ -20,6 +20,6 @@
     },
     "types": ["vite/client"]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.json"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.json", "src/Components/userRegistration/userRegister.jsx"],
   "exclude": ["node_modules"]
 }

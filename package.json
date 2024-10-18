@@ -13,6 +13,9 @@
     "fake-server": "json-server --port 8000 db.json"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@react-google-maps/api": "^2.20.3",
     "@react-oauth/google": "^0.12.1",
     "dotenv": "^16.4.1",
