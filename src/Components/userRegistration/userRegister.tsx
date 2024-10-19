@@ -118,7 +118,7 @@ export const Register: React.FC = () => {
         {success ? (
           <section>
             <h1>Success</h1>
-            <a href="#">Sign up</a>
+            <a href="/">Sign up</a>
           </section>
         ) : (
           <section>
