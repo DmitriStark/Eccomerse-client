@@ -37,7 +37,7 @@
 
 // export default AuthContext;
 
-import React, { createContext, useState, useEffect, ReactNode, useCallback } from "react";
+import React, { createContext, useState, useEffect, ReactNode, useCallback, useRef } from "react";
 
 // Define AuthState and AuthContext types
 interface AuthState {
@@ -59,38 +59,35 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 // AuthProvider component
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [auth, setAuth] = useState<AuthState>({
-        pwd: null, // Initialize pwd as null
-        roles: null, // Initialize roles as null
+        pwd: null,
+        roles: null,
         accessToken: null,
-        email: null, // Initialize email as null
+        email: null,
     });
 
-    // Timer for inactivity
-    const [inactivityTimeoutId, setInactivityTimeoutId] = useState<ReturnType<typeof setTimeout> | null>(null);
     const inactivityDuration = 3 * 60 * 60 * 1000; // 3 hours in milliseconds
+    const inactivityTimeoutIdRef = useRef<ReturnType<typeof setTimeout> | null>(null); // Use ref to store timeout ID
 
     // Function to reset inactivity timer
     const resetInactivityTimer = useCallback(() => {
-        if (inactivityTimeoutId) {
-            clearTimeout(inactivityTimeoutId); // Clear existing timeout
+        if (inactivityTimeoutIdRef.current) {
+            clearTimeout(inactivityTimeoutIdRef.current); // Clear existing timeout if it exists
         }
 
         // Set a new timeout to log the user out after inactivity duration
-        const timeoutId = setTimeout(() => {
+        inactivityTimeoutIdRef.current = setTimeout(() => {
             setAuth({
-                pwd: null, // Reset pwd
-                roles: null, // Reset roles
+                pwd: null,
+                roles: null,
                 accessToken: null,
-                email: null, // Reset email
+                email: null,
             });
             // Clear sessionStorage after timeout
             sessionStorage.removeItem("email");
             sessionStorage.removeItem("accessToken");
             sessionStorage.removeItem("roles");
         }, inactivityDuration);
-
-        setInactivityTimeoutId(timeoutId); // Store the timeout ID
-    }, [inactivityDuration, inactivityTimeoutId]); // Include inactivityTimeoutId in the dependency array
+    }, [inactivityDuration]); // Depend only on inactivityDuration
 
     // Load authentication data from sessionStorage when the component mounts
     useEffect(() => {
@@ -103,7 +100,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 setAuth({
                     email: storedEmail,
                     accessToken: storedToken,
-                    roles: storedRoles ? JSON.parse(storedRoles) : null, // Set roles to null if not found
+                    roles: storedRoles ? JSON.parse(storedRoles) : null,
                     pwd: null, // Don't store password
                 });
                 resetInactivityTimer(); // Start the inactivity timer when loading auth data
@@ -112,12 +109,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 setAuth({
                     email: storedEmail,
                     accessToken: storedToken,
-                    roles: null, // Default to null if parsing fails
+                    roles: null,
                     pwd: null, // Don't store password
                 });
             }
         }
-    }, [resetInactivityTimer]); // Include resetInactivityTimer in the dependency array
+    }, [resetInactivityTimer]); // Keep resetInactivityTimer here
 
     // Save auth data to sessionStorage whenever auth state changes
     useEffect(() => {
@@ -129,13 +126,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             } else {
                 sessionStorage.removeItem("roles");
             }
-            resetInactivityTimer(); // Reset the inactivity timer on auth state change
         } else {
             sessionStorage.removeItem("email");
             sessionStorage.removeItem("accessToken");
             sessionStorage.removeItem("roles");
         }
-    }, [auth, resetInactivityTimer]); // Include resetInactivityTimer in the dependency array
+    }, [auth]); // Only depend on auth
 
     // Reset inactivity timer on user interaction
     useEffect(() => {
@@ -154,7 +150,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             window.removeEventListener("click", handleActivity);
             window.removeEventListener("scroll", handleActivity);
         };
-    }, [resetInactivityTimer]); // Include resetInactivityTimer in the dependency array
+    }, [resetInactivityTimer]); // Keep resetInactivityTimer here
 
     return (
         <AuthContext.Provider value={{ auth, setAuth, resetInactivityTimer }}>
