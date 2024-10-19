@@ -15,7 +15,7 @@ export interface Product {
 interface CatalogProps {}
 
 const apiUrl = `${serverHost}/products`;
-
+console.log("@@@",apiUrl)
 const Catalog: React.FC<CatalogProps> = () => {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);

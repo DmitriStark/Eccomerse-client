@@ -56,6 +56,9 @@ export default function NavBar() {
           <div className={burgerClass}></div>
         </div>
         <p>Click The Burger To open Menu</p>
+        <div className="register">
+        <Link to="/register">register</Link>
+        </div>
       </nav>
       <div className={menuClass}>
         <div className="navbar">
@@ -84,6 +87,7 @@ export default function NavBar() {
           </ul>
         </div>
       </div>
+    
     </>
   );
 }
