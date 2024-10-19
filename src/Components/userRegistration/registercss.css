@@ -133,4 +133,5 @@ main {
     width: 100%;             /* Full width */
     height: 100%;            /* Full height to occupy entire main element */
     background-color: rgba(0, 0, 0, 0.1); /* Optional background for visibility */
+    background-color: rgba(196, 139, 139, 0.39);
 }
