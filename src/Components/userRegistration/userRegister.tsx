@@ -1,4 +1,3 @@
-
 import {
   faCheck,
   faInfoCircle,
@@ -13,6 +12,8 @@ import React from "react";
 
 const user_regex = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
 const Register_URL = "/register";
 
 // Define types for state and error references
@@ -35,6 +36,10 @@ export const Register: React.FC = () => {
   const [errMsg, setErrMsg] = useState<string>("");
   const [success, setSuccess] = useState<boolean>(false);
 
+  const [email, setEmail] = useState("");
+  const [validEmail, setValidEmail] = useState(false);
+  const [emailFocus, setEmailFocus] = useState(false);
+
   useEffect(() => {
     if (userRef.current) userRef.current.focus();
   }, []);
@@ -46,6 +51,14 @@ export const Register: React.FC = () => {
 
     setValidName(result);
   }, [user]);
+
+  useEffect(() => {
+    const result = emailRegex.test(email);
+    console.log(result);
+    console.log(email);
+
+    setValidEmail(result);
+  }, [email]);
 
   useEffect(() => {
     const result = PWD_REGEX.test(pwd);
@@ -73,7 +86,7 @@ export const Register: React.FC = () => {
     try {
       const response = await axios.post(
         Register_URL,
-        JSON.stringify({ user, pwd }),
+        JSON.stringify({ username: user, email: email, password: pwd }),
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
@@ -85,7 +98,7 @@ export const Register: React.FC = () => {
       setUser("");
       setPwd("");
       setMatchPwd("");
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       console.log(err);
       if (!err?.response) {
@@ -141,12 +154,45 @@ export const Register: React.FC = () => {
               />
               <p
                 id="uidnote"
-                className={userFocus && !validName ? "instructions" : "offscreen"}
+                className={
+                  userFocus && !validName ? "instructions" : "offscreen"
+                }
               >
                 <FontAwesomeIcon icon={faInfoCircle} />
                 4 to 24 characters. <br />
                 Must begin with a letter. <br />
                 Letters, numbers, underscores, hyphens allowed.
+              </p>
+
+              <label htmlFor="email">
+                Email:
+                <span className={validEmail ? "valid" : "hide"}>
+                  <FontAwesomeIcon icon={faCheck} />
+                </span>
+                <span className={validEmail || !email ? "hide" : "invalid"}>
+                  <FontAwesomeIcon icon={faTimes} />
+                </span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                autoComplete="off"
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                aria-invalid={validEmail ? "false" : "true"}
+                aria-describedby="emailnote"
+                onFocus={() => setEmailFocus(true)}
+                onBlur={() => setEmailFocus(false)}
+              />
+              <p
+                id="emailnote"
+                className={
+                  emailFocus && !validEmail ? "instructions" : "offscreen"
+                }
+              >
+                <FontAwesomeIcon icon={faInfoCircle} />
+                Please enter a valid email address. <br />
+                Example: name@example.com
               </p>
 
               <label htmlFor="password">
@@ -210,7 +256,9 @@ export const Register: React.FC = () => {
               />
               <p
                 id="confirmnote"
-                className={matchFocus && !validMatch ? "instructions" : "offscreen"}
+                className={
+                  matchFocus && !validMatch ? "instructions" : "offscreen"
+                }
               >
                 <FontAwesomeIcon icon={faInfoCircle} />
                 Must match the first password input field.
