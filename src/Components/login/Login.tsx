@@ -1,7 +1,7 @@
 
 import { useRef, useState, useEffect, useContext, FormEvent } from "react";
 import AuthContext from "../context/AuthProvider";
-import axios from "../../api/axios";
+import axios from "axios";
 import React from "react";
 import "./login.css";
 

@@ -5,7 +5,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
-import axios from "../../api/axios";
+import axios from "axios";
 import Login from "../../Components/login/GoogleLogin";
 import React from "react";
 import "./registercss.css";

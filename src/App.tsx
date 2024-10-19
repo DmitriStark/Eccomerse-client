@@ -13,11 +13,10 @@ import UserPage from "./Components/UserPage";
 import { Map } from "./Components/Map";
 import { Register } from "./Components/userRegistration/userRegister";
 import Login from "./Components/login/Login";
-import { AuthProvider } from './Components/context/AuthProvider';
 
 const App: React.FC = () => {
   return (
-    <AuthProvider> {/* Wrap your application in AuthProvider */}
+    <>
       <NavBar />
       <div className="main">
         <Routes>
@@ -35,7 +34,7 @@ const App: React.FC = () => {
         </Routes>
       </div>
       <Footer />
-    </AuthProvider>
+    </>
   );
 };
 
