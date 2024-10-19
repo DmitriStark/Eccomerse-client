@@ -100,7 +100,7 @@ nav p {
 
   .menu {
     top: 8%; /* Adjust position on smaller screens */
-    width: 80%; /* Make the menu wider */
+    width: 40%; /* Make the menu wider */
     font-size: 15px; /* Smaller font size */
   }
 
