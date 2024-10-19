@@ -14,7 +14,7 @@ const user_regex = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-const Register_URL = "/register";
+const Register_URL = import.meta.env.VITE_REGISTER_URL as string;
 
 // Define types for state and error references
 export const Register: React.FC = () => {
