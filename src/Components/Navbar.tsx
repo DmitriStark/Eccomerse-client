@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "../css/NavBar.css";
 import AuthContext from "../Components/context/AuthProvider"; // Import AuthContext
 import React from "react";
+import Logout from "./logOut/logout";
 
 export default function NavBar() {
   const { auth } = useContext(AuthContext); // Access auth context
@@ -38,6 +39,7 @@ export default function NavBar() {
               <img src="/path/to/icon.png" alt="User Icon" />
               {/* You can also use the user's name if available */}
               <span>{auth.email}</span> {/* Display user's email or name */}
+              <Logout/>
             </div>
           ) : (
             <>
