@@ -76,6 +76,7 @@ nav p {
   transform: rotate(0) translate(0); /* Reset transformation */
 }
 .register a {
+
   text-decoration: none; /* Remove underline */
   color: blue !important; /* Set link color to blue with higher priority */
   text-transform: lowercase; /* Make text lowercase */
@@ -84,18 +85,23 @@ nav p {
 /* Mobile styles */
 @media only screen and (max-width: 600px) {
   nav {
-    flex-direction: column; /* Stack items vertically on mobile */
-    align-items: flex-start; /* Align items to the start */
+    flex-direction: row; /* Keep items in a row */
+    align-items: center; /* Vertically center items */
+  }
+
+  .burger-menu {
+    margin-right: auto; /* Ensure the burger menu stays on the left */
+  }
+
+  .register {
+    font-size: 1.5em; /* Increase font size */
+    margin-left: auto; /* Push the register section to the right */
   }
 
   .menu {
     top: 8%; /* Adjust position on smaller screens */
     width: 80%; /* Make the menu wider */
     font-size: 15px; /* Smaller font size */
-  }
-
-  .burger-menu {
-    align-items: center; /* Center burger menu vertically */
   }
 
   .burger-bar {
