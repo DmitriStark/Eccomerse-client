@@ -16,7 +16,7 @@ const UserPage: React.FC = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const apiUrl = `${serverHost}/users`;
+        const apiUrl = `${serverHost}/user`;
         const response = await fetch(`${apiUrl}/${id}`);
         const userData: UserData = await response.json();
         setUser(userData);

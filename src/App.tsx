@@ -27,7 +27,7 @@ const App: React.FC = () => {
           <Route path="/games" element={<Games />} />
           <Route path="/localstorage" element={<LocalStorageDemo />} />
           <Route path="/users" element={<Users />} />
-          <Route path="/user/:id" element={<UserPage />} />
+          <Route path="/users/:id" element={<UserPage />} />
           <Route path="/map" element={<Map />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
