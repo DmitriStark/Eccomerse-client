@@ -111,6 +111,7 @@ const Users: React.FC = () => {
       }
 
       try {
+        
         const res = await fetch(apiUrl, {
           method: "GET",
           headers: {
