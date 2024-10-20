@@ -13,7 +13,7 @@ const ProductPage: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiUrl = `${serverHost}/products`;
+        const apiUrl = `${serverHost}/product`;
         const res = await fetch(`${apiUrl}/${id}`);
         const data: Product = await res.json();
         setProduct(data);
